@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/movies/movies",
+    "pages/movies/more/more",
+    "pages/atguigu/index",
+    "pages/atguigu/detail/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "rainbow",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "硅谷影院",
+        "iconPath": "./pages/movies/img/movie.png",
+        "selectedIconPath": "./pages/movies/img/movie-hover.png"
+      },
+      {
+        "pagePath": "pages/atguigu/index",
+        "text": "硅谷主页",
+        "iconPath": "./pages/movies/img/atguigu.png",
+        "selectedIconPath": "./pages/movies/img/atguigu-hover.png"
+      }
+    ],
+    "color": "#000000",
+    "selectedColor": "#f90f90",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "position": "bottom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

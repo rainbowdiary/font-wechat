@@ -1,0 +1,17 @@
+{
+  "name": "wechat_front",
+  "version": "1.0.0",
+  "description": "1. code换openid\r 2. openid入库\r 3. 用户uid入微信Storage",
+  "main": "app.js",
+  "dependencies": {
+    "regenerator": "^0.13.1",
+    "weapp-utils": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

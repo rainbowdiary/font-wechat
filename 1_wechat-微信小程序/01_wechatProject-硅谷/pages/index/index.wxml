@@ -1,0 +1,9 @@
+<!--index.wxml-->
+  <view class="userinfo">
+      <image class="avatar" src="./img/cat.jpg"></image>
+      <text class="userinfo-nickname">hello rainbow</text>
+      <view class="btn" bind:tap="handleTap">
+        <text>进入微信小程序</text>
+      </view>
+      <view></view>
+  </view>

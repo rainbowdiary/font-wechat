@@ -1,0 +1,11 @@
+<view class="login">
+  <!-- 点击按钮时，拿到用户信息open-type -->
+  <button wx:if="{{!hasUserInfo}}" class="login-btn" type='primary' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    微信登录
+  </button>
+  <view wx:else class="userInfo">
+    <image src="{{userInfo.avatarUrl}}" bind:tap="toAtGuigu" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <!-- <open-data type="userNickName" lang="en" /> -->
+</view>

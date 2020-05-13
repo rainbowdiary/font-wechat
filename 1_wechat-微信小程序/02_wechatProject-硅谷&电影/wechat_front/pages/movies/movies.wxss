@@ -1,0 +1,39 @@
+@import "./row/row.wxss";
+
+.movie {
+  background-color: #f2f2f2;
+}
+
+text {
+  font-family: MicroSoft Yahei;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.movie .movie-search {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  height: 80rpx;
+  width: 100%;
+}
+
+.movie .movie-search .search {
+  margin-left: 10rpx;
+}
+
+.movie .movie-search .search-input {
+  height: 100%;
+  width: 600rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.movie .movie-search .placeholder {
+  font-size: 28rpx;
+  color: #d1d1d1;
+}
+
+.movie .movie-search .clear {
+  margin: 0 10rpx;
+}

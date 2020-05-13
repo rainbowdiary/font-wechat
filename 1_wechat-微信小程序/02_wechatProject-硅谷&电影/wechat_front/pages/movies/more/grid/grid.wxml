@@ -1,0 +1,9 @@
+<import src="../../row/item/item" />
+<template name="grid">
+  <view class="grid">
+    <template is="item" wx:key="index" wx:for="{{movies}}" data="{{...item}}" />
+    <template is="item" wx:if="{{movies.length%3===1}}"></template>
+    <template is="item" wx:if="{{movies.length%3===1}}"></template>
+    <template is="item" wx:if="{{movies.length%3===2}}"></template>
+  </view>
+</template>

@@ -1,0 +1,64 @@
+<!-- 引入优势模板 -->
+<import src="./template/index.wxml" />
+<!-- index.wxml -->
+<view class="main">
+  <view class="header">
+    <image src="./img/header/top.jpg" alt="" />
+  </view>
+  <!-- 轮播图 -->
+  <swiper circular="true" indicator-dots="true" indicator-active-color="red" autoplay="true" interval="1000" duration="{{500}}">
+    <swiper-item>
+      <image class="swiper-image" src="./img/swiper/1.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image class="swiper-image" src="./img/swiper/2.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image class="swiper-image" src="./img/swiper/3.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image class="swiper-image" src="./img/swiper/4.jpg" />
+    </swiper-item>
+    <swiper-item>
+      <image class="swiper-image" src="./img/swiper/5.jpg" />
+    </swiper-item>
+  </swiper>
+  <!-- 课程表区域 -->
+  <view class="course">
+    <view class="titles">
+      <text class="course-title1">{{listData.title}}</text>
+      <text class="course-title2">{{listData.title2}}</text>
+    </view>
+    <view class="course-lists">
+      <view wx:for="{{listData.courses}}" wx:key="index" class="course-item">
+        <image src="{{listData.courseUrls[index]}}" alt="" />
+        <text class="item-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 优势区域 -->
+  <view bind:tap="handleDetail" data-newsId="{{item.newsid}}" wx:for="{{templateDatas}}" wx:key="newsid">
+    <template is="goodness" data="{{...item}}"></template>
+  </view>
+  <!-- 底部公司信息 -->
+  <view class="footer">
+    <view class="footer-left">
+      <image src="./img/info/info.jpg" alt="image" />
+      <text class="left-text">尚硅谷官方微信:atguigu</text>
+    </view>
+    <view class="footer-right">
+      <view class="right-top">
+        <text class="title">校区:</text>
+        <text>北京昌平区宏福科技园综合楼3层(北京)</text>
+        <text>深圳市宝安区西部硅谷大厦B座3层(深圳)</text>
+        <text>上海市松江区大江大厦3层(上海)</text>
+      </view>
+      <view class="right-bottom">
+        <text class="title">电话:</text>
+        <view>010-56253825(北京)</view>
+        <view>0755-85293825(深圳)</view>
+        <view>021-85293825(上海)</view>
+      </view>
+    </view>
+  </view>
+</view>

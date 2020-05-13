@@ -1,0 +1,33 @@
+.login {
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login-btn {
+  /* background-color: green; */
+  width: 30%;
+}
+
+.login .userInfo .login-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .userInfo image {
+  width: 150rpx;
+  height: 150rpx;
+  display: block;
+  border-radius: 50%;
+  margin-bottom: 50rpx;
+}
+
+.login .userInfo text {
+  font-weight: bold;
+}

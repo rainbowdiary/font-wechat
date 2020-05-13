@@ -1,0 +1,171 @@
+﻿# 微信公众号
+	测试号信息
+	appID
+	wx51f4ef3af4058ccf
+	appsecret
+	bea50cb27022ade2bd31a1ed282596c8
+	url:  
+	http://8f4bd786.ngrok.io
+	token: rainbowdiary
+## 跟微信的通信原理:
+	微信客户端  微信服务器 开发者服务器
+	拼加密字符串
+	加密:
+		npm i sha1
+## 1.接口配置信息:(服务器资源)
+验证服务器有消息：
+    1. 在测试号管理页面添加正确的url地址（必须外网能访问的地址） 和 token
+      本地 http://localhost:3000 通过内网穿透工具映射外网能访问的地址 ngrok
+      ngrok http 端口号
+    2. 当你点击提交按钮，会向开发者服务器发送get请求。其中携带了4个参数。
+        开发者需要通过这4个参数来推导请求来自于微信服务器。
+		4个参数: const { signature, echostr, timestamp, nonce } = req.query;
+    3. 1）将token、timestamp、nonce三个参数进行字典序排序
+	      token:填写在微信公众号平台的token
+		  timestamp, nonce :通过提交按钮获得的客户端请求数据
+		  排序:数组sort方法
+       2）将三个参数字符串拼接成一个字符串进行sha1加密
+		  安装sha1的库加密后得到加密字符串
+       3）开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
+		  判断加密字符串是否与signature相同
+### 相关说明
+使用的库:sha1
+ 使用sha1加密方式加密字符串
+知识点:	
+	Array=>字符串
+  array.join("sepatate");
+  如果separate为"";表示元素之间没有任何字符
+## 2.代码模块化
+	config
+	middilewares/verify.js
+	app.js
+## 3.获取Access token
+获取access_token:
+  官方文档：https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html
+  1. 是什么？
+    是公众号的全局唯一接口调用凭据，公众号调用各接口时都需使用access_token。
+  2. 特点：
+    大小至少512个字符
+    有效期目前为2个小时
+    重复获取将导致上次获取的access_token失效。
+  1. 请求信息：
+    - 请求方式 get
+    - 请求地址 https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+    - 请求参数：
+      grant_type client_credential
+      appid
+      secret
+  2. 设计：
+    第一次：发送请求，获取access_token，持久化存储到数据库中（access_token, expires_in）
+    第二次：从数据库中读取access_token，判断有没有过期
+      没有过期  直接使用
+      过期了，重新请求，获取access_token，持久化存储到数据库中（access_token, expires_in）
+  3. 整理：
+    先判断数据库中有没有（access_token, expires_in） (定义函数fetchAccessToken)
+      有
+        判断有没有过期
+          没有过期  直接使用
+          过期了，重新请求，获取access_token，持久化存储到数据库中（access_token, expires_in）(代码复用定义函数getAccessToken)
+      没有
+        发送请求，获取access_token，持久化存储到数据库中（access_token, expires_in）(代码复用定义函数getAccessToken)
+ ### 相关说明
+ 1. 使用的库:
+	服务端发请求获取token使用:
+		request库:request-promise-native;
+			获取的返回值都是promise
+		考虑网络延迟,提前5分钟请求token
+2. 技术点:
+	 async返回值为一个promise,使用await拿到对象
+	.then拿到promise返回值
+3. 注意点: 返回值为promise的如果获取返回值
+4. 测试: 
+   引入数据库为了测试
+   调用函数检查返回值是否可以获取
+
+promise 不能返回值
+只能返回promise，因为它是异步的，外部要用就得 fn1().then(value => console.log(value)) 的方式拿到值
+
+----------day02------------
+1. 自定义菜单
+微信接口实现类:
+ *  自定义菜单接口实现
+ *  创建接口文档: https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html
+ * 接口调用请求说明
+    http请求方式：
+    POST（请使用https协议） 
+    https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+定义class类封装所有刚微信相关的接口
+
+
+2.微信网页开发	
+获取请求:
+	服务端发请求获取第三方接口信息:使用request库
+	本地服务器和页面渲染使用:app.get/post
+测试:将公网页面链接放到自定义菜单的view功能的菜单中
+	菜单改了不会生效
+	重新发送请求创建菜单
+		需要删除菜单,才能修改
+		deleteMenu,createMenu
+	菜单生效后;
+	通过微信调试工具调试微信测试公众号中我们的链接alert的返回值
+	启动服务器映射外网3000端口
+		注意点事:外网的url变更,需要修改menu和app里面的url,地址url/search用来区分
+问题:无效的signature!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		本地服务器域名: http://d3f14c06.ngrok.io
+
+
+服务端渲染
+alt+shift+a,块注释
+表情:
+http://bj.96weixin.com/
+
+爬虫:
+	puppeter库
+	就是对dom进行各种操作
+	
+websocket:
+场景:
+	及时聊天技术
+	暂时只能群聊
+	单聊:
+		客户创建客户端唯一id,发消息,from=id,to=id,
+		只能广播,所以接收信息的时候判断,日期排序
+		字段:date,from,to,username
+介绍:
+	解决http协议的缺陷: 
+		只能由客户端发送请求给服务端
+		有请求一定有响应
+		通信内容多
+websocket:
+	能让服务端向客户端通信
+	不需要响应速度快(只通信报文主题)
+	天然没有跨域
+协议:ws://localhost:3000	
+	
+没有websocket的时候:	
+	ajax轮训:
+		a->server->b:轮训
+			     <-
+	    效率低	
+使用:
+	服务端库:socket.io
+		给所有人包括自己发消息
+		给除了自己以外的人发消息
+	客户端引入:github搜索socketio
+		连接远程sokcet
+		发送消息: 消息名称与服务端相同
+		接收消息:
+	效果,客户端打开,另外一个客户端收到消息;
+	客户端a刷新,客户端b收到消息
+
+	服务端:
+		1. 创建服务
+		2. 连接客户端
+		3. socket客户端对象(接收on和转发emit消息)
+	客户端:
+		1. 连接服务端io,返回客户端对象
+		2. 触发消息emit
+		3. 接收服务端消息on
+		
+-----day03-------------------
+gulp

@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "b525de01-3a75-4dbb-b6ec-f1db27fdbc65",
+		"name": "0722小程序",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取最新一期的期刊",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTNhYjFmOTBlZGEzMzU2ZDhjMGYxM2MiLCJpYXQiOjE1ODA5MDU3MTEsImV4cCI6MTU4MTUxMDUxMX0.w8tSHRs0MVRR_VlKfm1CozyHQA1TZR4ebe1WxWdwOHk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/wx_journals/latest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"wx_journals",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取当前一期的下一期",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTNhYjFmOTBlZGEzMzU2ZDhjMGYxM2MiLCJpYXQiOjE1ODA5MDU3MTEsImV4cCI6MTU4MTUxMDUxMX0.w8tSHRs0MVRR_VlKfm1CozyHQA1TZR4ebe1WxWdwOHk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/wx_journals/7/next",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"wx_journals",
+						"7",
+						"next"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取当前一期的上一期",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTNhYjFmOTBlZGEzMzU2ZDhjMGYxM2MiLCJpYXQiOjE1ODA5MDU3MTEsImV4cCI6MTU4MTUxMDUxMX0.w8tSHRs0MVRR_VlKfm1CozyHQA1TZR4ebe1WxWdwOHk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/wx_journals/7/pre",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"wx_journals",
+						"7",
+						"pre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取对应期刊的点赞数量",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/journal/latest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"journal",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "列出当前用户喜欢的期刊列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/journal/latest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"journal",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "对指定期刊进行点赞",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/journal/latest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"journal",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消对指定期刊的点赞",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/journal/latest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"journal",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,16 @@
+<import src="./row/row" />
+<import src="./more/grid/grid" />
+<view class="movie">
+  <!-- - http://t.yushu.im/v2/movie/search?q=周冬雨 -->
+  <view class="movie-search">
+    <icon class='search' type='search' size='22' color='#405f80' />
+    <input bindconfirm="handleConfirm" value="{{searchValue}}" bindfocus="handleFocus" class="search-input" placeholder='流浪地球' placeholder-class="placeholder" />
+    <icon bind:tap="handleClear" wx:if="{{showGrids}}" class='clear' size='22' color='#405f80' type='clear' />
+  </view>
+  <block wx:if="{{showRows}}">
+    <template is="row" wx:key="index" wx:for="{{moviesList}}" data="{{...item}}" />
+  </block>
+  <block wx:if="{{showGrids}}">
+    <template is="grid" wx:key="index" data="{{movies:searchMovies}}" />
+  </block>
+</view>

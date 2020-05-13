@@ -1,0 +1,9 @@
+<template name="goodness">
+  <view class="goodness">
+    <view class="titles">
+      <view class="title1">{{title}}</view>
+      <view class="title2">{{title2}}</view>
+    </view>
+    <image src="{{src}}" alt="image" />
+  </view>
+</template>

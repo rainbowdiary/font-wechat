@@ -1,0 +1,33 @@
+@import "./item/item.wxss";
+
+/* 整体背景色:白色
+整体下部空隙 20
+头部四周空隙 上:30rpx  左右20rpx  下22rpx;
+头部字体大小 24
+头部文字颜色 #1f4ba5(更多)
+头部图标大小 16
+文字与图标间距离 10 */
+.row {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.row .row-top {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx 22rpx 20rpx;
+  font-size: 24rpx;
+  color: #1f4ba5;
+}
+
+.row .row-top .more-right {
+  display: inline-flex;
+  align-items: center;
+}
+
+.row .row-top .more-right .more {
+  margin-right: 10rpx;
+}

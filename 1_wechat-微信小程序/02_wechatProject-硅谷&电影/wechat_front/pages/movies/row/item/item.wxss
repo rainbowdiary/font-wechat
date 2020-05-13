@@ -1,0 +1,29 @@
+@import "./stars/stars.wxss";
+
+/* 容器左右有22rpx的空隙
+海报尺寸: 200 * 270 
+海报底部 20空隙
+电影名字大小:24
+文字底部16空隙 */
+.item {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0 22rpx;
+  width: 200rpx;
+}
+
+.item .item-image {
+  width: 200rpx;
+  height: 270rpx;
+  margin-bottom: 20rpx;
+}
+
+.item .item-text {
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+  color: #666;
+  /* 加上文本溢出省略号 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,27 @@
+/* 优势区域 */
+.goodness {
+  width: 750rpx;
+  height: 650rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goodness .titles {
+  text-align: center;
+  margin-top: 38rpx;
+  margin-bottom: 33rpx;
+}
+
+.goodness .titles .title1 {
+  font-size: 44rpx;
+}
+
+.goodness .titles .title2 {
+  font-size: 29rpx;
+}
+
+.goodness>image {
+  width: 750rpx;
+  height: 472rpx;
+}
